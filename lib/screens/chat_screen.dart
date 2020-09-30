@@ -1,7 +1,9 @@
+import 'package:chat_app/widgets/chat/test_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../widgets/chat/messages.dart';
 import '../widgets/chat/messages.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -32,17 +34,18 @@ class ChatScreen extends StatelessWidget {
               )
             ],
             onChanged: (itemIdentifier) {
-              if (itemIdentifier=='logout') {
-                
+              if (itemIdentifier == 'logout') {
                 FirebaseAuth.instance.signOut();
               }
             },
           )
         ],
       ),
-      body: Container(child: Column(children: <Widget>[
-
-      ],),),
+      body: Container(
+        child: ListView(
+          children: <Widget>[Msg()],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
